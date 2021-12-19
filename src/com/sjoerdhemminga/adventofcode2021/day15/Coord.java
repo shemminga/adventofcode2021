@@ -6,7 +6,7 @@ import java.util.Optional;
 
 record Coord(int x, int y) {
     private Optional<Coord> getLeft() {
-        return x <= 0 ? Optional.empty() : Optional.of(new Coord(x - 1, 0));
+        return x <= 0 ? Optional.empty() : Optional.of(new Coord(x - 1, y));
     }
 
     private Optional<Coord> getTop() {
