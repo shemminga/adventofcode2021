@@ -1,0 +1,27 @@
+diff --git a/Star1.java b/Star2.java
+index ce2cf6a..20405b9 100644
+--- a/Star1.java
++++ b/Star2.java
+@@ -8,18 +8,22 @@ import java.nio.file.Paths;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
+public final class [-Star1-]{+Star2+} {
+    public static void main(final String... args) throws IOException, URISyntaxException {
+        final URL input = [-Star1.class.getResource("input.txt");-]{+Star2.class.getResource("input.txt");+}
+
+        try (final Stream<String> lines = Files.lines(Paths.get(input.toURI()))) {
+            final int[] ints = lines.filter(Predicate.not(String::isBlank))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
+
+            {+final int[] slices = new int[ints.length - 2];+}
+{+            for (int i = 0; i < ints.length - 2; i++)+}
+{+                slices[i] = ints[i] + ints[i + 1] + ints[i + 2];+}
+
+            int cnt = 0;
+            for (int i = 1; i < [-ints.length;-]{+slices.length;+} i++)
+                if [-(ints[i-]{+(slices[i+} - 1] < [-ints[i])-]{+slices[i])+} cnt++;
+
+            System.out.println(cnt);
+        }
